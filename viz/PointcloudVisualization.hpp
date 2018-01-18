@@ -23,10 +23,12 @@ class PointcloudVisualization : public vizkit3d::Vizkit3DPlugin< base::samples::
     public:
         PointcloudVisualization();
         
+	Q_INVOKABLE void updateData(const base::samples::Pointcloud& sample)
+        { return Vizkit3DPlugin<base::samples::Pointcloud>::updateData(sample); }
         Q_INVOKABLE void updatePointCloud( const base::samples::Pointcloud& sample )
         { return updateData(sample); }
         Q_INVOKABLE void updateChannelData( const std::vector< base::Vector3d >& channel_data )
-        { return updateData(channel_data); }
+        { return Vizkit3DPlugin<base::samples::Pointcloud>::updateData(channel_data); }
         
     public slots:
         QColor getDefaultFeatureColor();
